@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадебное приглашение</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+:root{
+  --olive:#6b7f4f;
+  --terracotta:#c97a5b;
+  --cream:#fff7ec;
+  --gold:#e8c07d;
+  --ink:#2f3b2f;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: url('leaves.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 10px;
+  color: var(--ink);
+}
+
+.overlay {
+  background: rgba(255, 247, 236, 0.92);
+  padding: 60px 30px 80px;
+  max-width: 820px;
+  width: 100%;
+  border-radius: 26px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+  text-align: center;
+  border: 1px solid rgba(201,122,91,.25);
+  position: relative;
+}
+
+.music-player {
+  position: sticky;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  z-index: 5;
+}
+
+.music-box {
+  background: linear-gradient(135deg, var(--olive), var(--terracotta));
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 60px;
+  color: var(--olive);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  color: var(--terracotta);
+  margin-bottom: 15px;
+}
+
+.photo-container { position: relative; display: inline-block; margin: 30px 0; }
+.photo-container img { width: 300px; border-radius: 22px; box-shadow: 0 10px 28px rgba(0,0,0,0.25); border: 4px solid #fff; }
+.photo-caption { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); font-family: 'Great Vibes', cursive; font-size: 40px; color: #fff; text-shadow: 0 3px 10px rgba(0,0,0,0.6); }
+
+.names { font-size: 42px; font-weight: 600; margin: 20px 0; color: #2d5f73; }
+.date { font-size: 24px; margin: 20px 0; background: linear-gradient(135deg, var(--gold), #f4d35e); display: inline-block; padding: 10px 28px; border-radius: 999px; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+.text { font-size: 20px; margin: 20px 0; line-height: 1.7; color: #3c463c; }
+
+.section {
+  margin: 50px 0;
+  padding: 32px 22px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #ffffff, var(--cream));
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  border: 1px solid rgba(232,192,125,.35);
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline { text-align: left; max-width: 520px; margin: 0 auto; font-size: 18px; }
+.wishes { text-align: left; max-width: 600px; margin: 0 auto; font-size: 18px; }
+.wishes li { margin: 10px 0; }
+
+.section img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.25);
+  margin-top: 15px;
+  border: 4px solid #fff;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #e9f5ec, #ffffff);
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px dashed rgba(107,127,79,.35);
+}
+
+.socials { display: flex; gap: 18px; justify-content: center; margin: 15px 0; }
+.socials a { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 26px; color: #fff; text-decoration: none; box-shadow: 0 8px 18px rgba(0,0,0,.2); }
+.tg { background: #2AABEE; } .wa { background: #25D366; } .vk { background: #4C75A3; }
+
+.rsvp-photos { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.rsvp-photos img { width: 45%; max-width: 260px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,.25); border: 4px solid #fff; }
+
+footer { margin-top: 40px; font-size: 16px; color: #7f8a7f; font-style: italic; }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="music-player">
+  <div class="music-box" onclick="toggleMusic()">
+    <i id="musicIcon" class="fa-solid fa-pause"></i>
+    <span id="musicText">Музыка включена</span>
+  </div>
+</div>
+
+<audio id="bgMusic" loop autoplay>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Свадебное приглашение</h1>
+
+<div class="photo-container">
+  <img src="photo.png">
+  <div class="photo-caption">Мы женимся</div>
+</div>
+
+<div class="names">Владимир & Дарья</div>
+<div class="date">28.05.2026</div>
+
+<div class="text">
+  Дорогие родные и друзья! <br><br>
+  Приглашаем вас разделить радость этого особенного для нас события!
+</div>
+
+<div class="section">
+  <div class="section-title">Место проведения</div>
+  <p class="text">г. Мыски, ул. Лесхозная, 34 (коттедж)</p>
+  <img src="place.jpg">
+</div>
+
+<div class="section">
+  <div class="section-title">Программа дня</div>
+  <div class="timeline">
+    <p><b>Четверг, 28 мая 2026 года</b></p>
+    <p>• 15:00 — Сбор гостей</p>
+    <p>• 15:30 — Церемония</p>
+    <p>• 16:00 — Банкет</p>
+    <p>• 22:30 — Завершение вечера</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Пожелания</div>
+  <ul class="wishes">
+    <li>Праздник для взрослых — сообщите, если будете с детьми</li>
+    <li>Просим без криков «Горько»</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Dress code</div>
+  <p class="text">Будем рады, если поддержите цветовую палитру нашей свадьбы</p>
+  <img src="palette.jpg">
+</div>
+
+<div class="section">
+  <div class="section-title">Связь с нами</div>
+  <div class="highlight">
+    <p><b>Ответы можно прислать в любой мессенджер: +7 904 376-04-74</b></p>
+    <div class="socials">
+      <a class="tg" href="https://t.me/+79043760474" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a class="wa" href="https://wa.me/79043760474" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a class="vk" href="https://vk.com" target="_blank"><i class="fa-brands fa-vk"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Подтверждение присутствия</div>
+  <p class="text"><b>Подтвердите присутствие до 10 мая 2026</b></p>
+  <div class="rsvp-photos">
+    <img src="rsvp1.jpg">
+    <img src="rsvp2.jpg">
+  </div>
+  <p class="text"><b>Будем вас ждать!</b></p>
+</div>
+
+<footer>Con amore — С любовью</footer>
+
+</div>
+
+<script>
+const music = document.getElementById('bgMusic');
+const icon = document.getElementById('musicIcon');
+const text = document.getElementById('musicText');
+
+music.volume = 0.05;
+
+function fadeInMusic() {
+  let v = 0.05;
+  const maxV = 0.5;
+  const step = 0.02;
+  const interval = setInterval(() => {
+    if (v < maxV) {
+      v += step;
+      music.volume = Math.min(v, maxV);
+    } else clearInterval(interval);
+  }, 250);
+}
+
+window.addEventListener('load', () => {
+  music.play().then(()=>{
+    icon.className = "fa-solid fa-pause";
+    text.textContent = "Музыка включена";
+    fadeInMusic();
+  }).catch(()=>{
+    icon.className = "fa-solid fa-play";
+    text.textContent = "Включить музыку";
+  });
+});
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    fadeInMusic();
+    icon.className = "fa-solid fa-pause";
+    text.textContent = "Музыка включена";
+  } else {
+    music.pause();
+    icon.className = "fa-solid fa-play";
+    text.textContent = "Включить музыку";
+  }
+}
+
+// Анимация появления секций
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
+
+
+
