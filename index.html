@@ -92,16 +92,11 @@ h1 {
   background: linear-gradient(135deg, #ffffff, var(--cream));
   box-shadow: 0 12px 30px rgba(0,0,0,.12);
   border: 1px solid rgba(232,192,125,.35);
-
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.9s ease;
 }
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.section.show { opacity: 1; transform: translateY(0); }
 
 .timeline { text-align: left; max-width: 520px; margin: 0 auto; font-size: 18px; }
 .wishes { text-align: left; max-width: 600px; margin: 0 auto; font-size: 18px; }
@@ -184,8 +179,8 @@ footer { margin-top: 40px; font-size: 16px; color: #7f8a7f; font-style: italic; 
 <div class="section">
   <div class="section-title">Пожелания</div>
   <ul class="wishes">
-    <li>Праздник для взрослых — сообщите, если будете с детьми</li>
-    <li>Просим без криков «Горько»</li>
+    <li>Наш праздник для взрослых. По возможности оставьте детей под присмотром и погрузитесь в мир веселья вместе с нами. Если дети будут с вами, сообщите заранее.</li>
+    <li>Нам хотелось сделать этот день добрым, уютным праздником, просим воздержаться от криков «Горько»</li>
   </ul>
 </div>
 
@@ -193,6 +188,17 @@ footer { margin-top: 40px; font-size: 16px; color: #7f8a7f; font-style: italic; 
   <div class="section-title">Dress code</div>
   <p class="text">Будем рады, если поддержите цветовую палитру нашей свадьбы</p>
   <img src="palette.jpg">
+</div>
+
+<!-- БЛОК ВОПРОСОВ ДЛЯ ГОСТЕЙ (добавлен под Dress code) -->
+<div class="section">
+  <div class="section-title">Небольшая анкета для гостей</div>
+  <ul class="wishes">
+    <li>1. Что предпочитаете из напитков?</li>
+    <li>2. Есть ли аллергии или продукты, которые вы не едите?</li>
+    <li>3. Требуется ли вам трансфер или доберётесь самостоятельно?</li>
+    <li>4. Понадобится ли вам спальное место?</li>
+  </ul>
 </div>
 
 <div class="section">
@@ -209,7 +215,7 @@ footer { margin-top: 40px; font-size: 16px; color: #7f8a7f; font-style: italic; 
 
 <div class="section">
   <div class="section-title">Подтверждение присутствия</div>
-  <p class="text"><b>Подтвердите присутствие до 10 мая 2026</b></p>
+  <p class="text"><b>Подтвердите присутствие до 28 марта 2026</b></p>
   <div class="rsvp-photos">
     <img src="rsvp1.jpg">
     <img src="rsvp2.jpg">
@@ -278,6 +284,3 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
 </body>
 </html>
-
-
-
